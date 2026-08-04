@@ -2,6 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "bubble_sort.hpp"
+#include "insertion_sort.hpp"
 #include "selection_sort.hpp"
 #include "sort_test_helpers.hpp"
 
@@ -11,6 +12,15 @@ struct BubbleSortFn
     void operator()(It begin, It end) const
     {
         bubbleSort(begin, end);
+    }
+};
+
+struct InsertionSortFn
+{
+    template <typename It>
+    void operator()(It begin, It end) const
+    {
+        insertionSort(begin, end);
     }
 };
 
@@ -27,6 +37,7 @@ struct SelectionSortFn
 // project only requires a new functor above and one more type in this list.
 TEMPLATE_TEST_CASE("Sorting algorithm", "[sort]",
     BubbleSortFn,
+    InsertionSortFn,
     SelectionSortFn
 )
 {
