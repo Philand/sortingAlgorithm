@@ -60,4 +60,12 @@ void checkSortsCorrectly(SortFn sort)
         sort(values.begin(), values.end());
         REQUIRE(std::is_sorted(values.begin(), values.end()));
     }
+
+    SECTION("sorts a std::vector<double>")
+    {
+        std::vector<double> values = {4.384, 19.332, 347.3, 3894.12, 90, 2088.47, 0.002,
+                                      38.3, 0.003, 46.7, 39994.76, 36.2, 86.666, -1.3};
+        sort(values.begin(), values.end());
+        REQUIRE(std::is_sorted(values.begin(), values.end()));
+    }
 }
